@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Расписание занятий: верхняя и нижняя неделя, поиск предметов и фильтры.">
+    <title>Расписание — AJAX Hub</title>
+    <link rel="stylesheet" href="css/style.css">
+    <script src="js/common.js" defer></script>
+    <script src="js/schedule.js" defer></script>
+</head>
+<body>
+<div class="page-shell">
+    <header class="site-header">
+        <a class="brand" href="index.html" aria-label="AJAX Hub — главная">
+            <span class="brand-icon" aria-hidden="true">&lt;/&gt;</span>
+            <span>AJAX HUB</span>
+        </a>
+        <nav class="main-nav" aria-label="Основная навигация">
+            <a href="index.html" class="nav-link">Поиск</a>
+            <a href="news.html" class="nav-link">Новости</a>
+            <a href="schedule.html" class="nav-link active" aria-current="page">Расписание</a>
+        </nav>
+    </header>
+
+    <main class="schedule-page">
+        <section class="schedule-intro" aria-labelledby="schedule-page-title">
+            <div class="schedule-hero-copy">
+                <h1 id="schedule-page-title">Расписание</h1>
+                <p class="schedule-subtitle">5 семестр · 2026/2027 учебный год</p>
+            </div>
+            <div class="schedule-today" id="schedule-week-info" title="Номер учебной недели появится после загрузки данных">
+                <span class="schedule-today-label" id="schedule-date">Загрузка даты...</span>
+                <strong id="schedule-week-label">Определяем неделю</strong>
+                <small id="schedule-week-number">Наведите для номера недели</small>
+            </div>
+        </section>
+
+        <section class="schedule-filter-panel" aria-labelledby="schedule-filters-title">
+            <h2 id="schedule-filters-title">Фильтры</h2>
+            <div class="schedule-filters">
+                <label class="schedule-field schedule-field-search" for="schedule-subject">
+                    <span>Предмет</span>
+                    <input id="schedule-subject" type="search" placeholder="Поиск предмета..." autocomplete="off">
+                </label>
+                <label class="schedule-field" for="schedule-course">
+                    <span>Курс</span>
+                    <select id="schedule-course"><option value="">Загрузка...</option></select>
+                </label>
+                <label class="schedule-field" for="schedule-group">
+                    <span>Группа</span>
+                    <select id="schedule-group"><option value="">Загрузка...</option></select>
+                </label>
+                <label class="schedule-field" for="schedule-day">
+                    <span>День недели</span>
+                    <select id="schedule-day">
+                        <option value="1">Понедельник</option>
+                        <option value="2">Вторник</option>
+                        <option value="3">Среда</option>
+                        <option value="4">Четверг</option>
+                        <option value="5">Пятница</option>
+                        <option value="6">Суббота</option>
+                        <option value="7">Воскресенье</option>
+                    </select>
+                </label>
+                <label class="schedule-field" for="schedule-week">
+                    <span>Учебная неделя</span>
+                    <select id="schedule-week">
+                        <option value="auto">По дате</option>
+                        <option value="upper">Верхняя</option>
+                        <option value="lower">Нижняя</option>
+                    </select>
+                </label>
+            </div>
+        </section>
+
+        <section class="schedule-results" aria-labelledby="schedule-results-title">
+            <div class="section-heading">
+                <h2 id="schedule-results-title">Занятия</h2>
+                <span class="heading-line" aria-hidden="true"></span>
+                <span class="schedule-summary" id="schedule-summary"></span>
+            </div>
+            <p class="schedule-status" id="schedule-status" role="status" aria-live="polite">Загрузка расписания...</p>
+            <div id="schedule-list" class="schedule-list"></div>
+        </section>
+    </main>
+</div>
+</body>
+</html>

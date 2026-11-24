@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="AJAX Hub — поиск никнеймов, новости и расписание занятий.">
+    <title>Поиск — AJAX Hub</title>
+    <link rel="stylesheet" href="css/style.css">
+    <script src="js/common.js" defer></script>
+    <script src="js/search.js" defer></script>
+</head>
+<body>
+<div class="page-shell">
+    <header class="site-header">
+        <a class="brand" href="index.html" aria-label="AJAX Hub — главная">
+            <span class="brand-icon" aria-hidden="true">&lt;/&gt;</span>
+            <span>AJAX HUB</span>
+        </a>
+
+        <nav class="main-nav" aria-label="Основная навигация">
+            <a href="index.html" class="nav-link active" aria-current="page">Поиск</a>
+            <a href="news.html" class="nav-link">Новости</a>
+            <a href="schedule.html" class="nav-link">Расписание</a>
+        </nav>
+    </header>
+
+    <main>
+        <section class="hero" aria-label="Введение и поиск">
+            <div class="hero-art" aria-hidden="true">
+                <span class="art-wave wave-one"></span>
+                <span class="art-wave wave-two"></span>
+                <span class="glass-pane pane-back"></span>
+                <span class="glass-pane pane-middle"></span>
+                <span class="glass-pane pane-front">&lt;/&gt;</span>
+            </div>
+            <p class="hero-description">
+                Учебные материалы, новости, расписание занятий<br class="desktop-break">
+                и поиск по базе знаний.
+            </p>
+
+            <form id="search-form" class="search-form" autocomplete="off">
+                <label for="search-input" class="visually-hidden">Поиск по никнеймам</label>
+                <span class="search-icon" aria-hidden="true">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="7"></circle><path d="m20 20-4-4"></path></svg>
+                </span>
+                <input id="search-input" type="search" name="query" placeholder="Поиск по никнеймам..." spellcheck="false">
+                <button id="search-button" type="submit" class="primary-button">Найти</button>
+            </form>
+        </section>
+
+        <section class="results-section" aria-labelledby="results-title">
+            <div class="section-heading">
+                <h1 id="results-title">Результаты поиска</h1>
+                <span class="heading-line" aria-hidden="true"></span>
+                <label class="sort-control" for="search-sort">
+                    Сортировка
+                    <select id="search-sort">
+                        <option value="asc">А → Я</option>
+                        <option value="desc">Я → А</option>
+                    </select>
+                </label>
+            </div>
+
+            <p id="search-status" class="results-status" role="status" aria-live="polite">Загрузка данных...</p>
+            <ul id="results-list" class="results-list" aria-label="Найденные никнеймы"></ul>
+            <div class="load-more-wrap">
+                <button id="load-more" class="secondary-button" type="button" hidden>Показать ещё</button>
+            </div>
+        </section>
+
+        <section class="news-preview" aria-labelledby="news-heading">
+            <div class="section-heading">
+                <h2 id="news-heading">Материалы и новости</h2>
+                <span class="heading-line" aria-hidden="true"></span>
+            </div>
+            <div id="featured-news" class="featured-grid" aria-live="polite"></div>
+        </section>
+    </main>
+</div>
+</body>
+</html>

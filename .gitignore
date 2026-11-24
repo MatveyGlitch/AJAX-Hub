@@ -1,0 +1,14 @@
+# PhpStorm
+.idea/
+*.iml
+
+# Служебные файлы ОС
+.DS_Store
+Thumbs.db
+Desktop.ini
+
+# Локальные настройки и журналы
+.env
+.env.*
+!.env.example
+*.log

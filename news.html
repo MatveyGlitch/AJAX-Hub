@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Новости AJAX Hub с поиском, сортировкой и постраничной загрузкой.">
+    <title>Новости — AJAX Hub</title>
+    <link rel="stylesheet" href="css/style.css">
+    <script src="js/common.js" defer></script>
+    <script src="js/news.js" defer></script>
+</head>
+<body>
+<div class="page-shell">
+    <header class="site-header">
+        <a class="brand" href="index.html" aria-label="AJAX Hub — главная">
+            <span class="brand-icon" aria-hidden="true">&lt;/&gt;</span>
+            <span>AJAX HUB</span>
+        </a>
+
+        <nav class="main-nav" aria-label="Основная навигация">
+            <a href="index.html" class="nav-link">Поиск</a>
+            <a href="news.html" class="nav-link active" aria-current="page">Новости</a>
+            <a href="schedule.html" class="nav-link">Расписание</a>
+        </nav>
+    </header>
+
+    <main class="news-page">
+        <section class="news-intro" aria-labelledby="news-page-title">
+            <div class="news-intro-decor" aria-hidden="true">
+                <span></span><span></span><span></span>
+            </div>
+            <h1 id="news-page-title">Новости</h1>
+            <form id="news-search-form" class="search-form news-search-form" role="search" autocomplete="off">
+                <label for="news-search-input" class="visually-hidden">Поиск по новостям</label>
+                <span class="search-icon" aria-hidden="true">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <circle cx="11" cy="11" r="7"></circle>
+                        <path d="m20 20-4-4"></path>
+                    </svg>
+                </span>
+                <input id="news-search-input" type="search" name="query"
+                       placeholder="Поиск по новостям..." spellcheck="false">
+                <button id="news-search-button" class="primary-button" type="submit">Найти</button>
+            </form>
+        </section>
+
+        <section class="news-publications" id="publications" aria-labelledby="publications-title">
+            <div class="section-heading">
+                <h2 id="publications-title">Публикации</h2>
+                <span class="heading-line" aria-hidden="true"></span>
+                <label class="sort-control" for="news-sort">
+                    Сортировка
+                    <select id="news-sort">
+                        <option value="asc">А → Я</option>
+                        <option value="desc">Я → А</option>
+                    </select>
+                </label>
+            </div>
+
+            <p id="news-status" class="results-status" role="status" aria-live="polite">Загрузка новостей...</p>
+            <div id="news-list" class="news-list" aria-live="polite"></div>
+            <nav id="news-pagination" class="news-pagination" aria-label="Страницы новостей"></nav>
+        </section>
+    </main>
+</div>
+
+<!-- Полный текст подгружается отдельным POST-запросом при открытии окна. -->
+<div id="news-modal" class="news-modal" hidden>
+    <div class="news-modal-shade" data-close-modal></div>
+    <section class="news-modal-dialog" role="dialog" aria-modal="true"
+             aria-labelledby="modal-news-title" aria-describedby="modal-news-content" tabindex="-1">
+        <button id="news-modal-close" class="news-modal-close" type="button" aria-label="Закрыть окно">×</button>
+        <div class="news-modal-image-wrap">
+            <img id="modal-news-image" class="news-modal-image" src="assets/ajax-code.png" alt="">
+        </div>
+        <div class="news-modal-body">
+            <p id="modal-news-date" class="news-modal-date"></p>
+            <h2 id="modal-news-title">Новость</h2>
+            <div id="modal-news-content" class="news-modal-content" aria-live="polite">Загрузка...</div>
+        </div>
+    </section>
+</div>
+</body>
+</html>
